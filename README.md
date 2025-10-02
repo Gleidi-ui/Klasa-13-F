@@ -12,9 +12,8 @@ Një aplikacion i thjeshtë dhe i shpejtë për konvertimin e monedhave nga një
 
 ## 🛠️ Teknologjitë e përdorura
 
-- Frontend: HTML, CSS, JavaScript / React / Vue (sipas zgjedhjes)
-- Backend: Node.js / Python / PHP (sipas zgjedhjes)
-- API: [ExchangeRate API](https://www.exchangerate-api.com/) / [Open Exchange Rates](https://openexchangerates.org/)
+- Frontend: HTML, CSS
+- Backend: PHP
 
 ## 📦 Instalimi
 
