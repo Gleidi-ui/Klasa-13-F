@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="sq">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konvertues Euro në Lek</title>
+    <title>Konvertues Monedhash</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,7 +25,7 @@
             display: block;
             margin-bottom: 8px;
         }
-        input {
+        input, select {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -56,12 +56,21 @@
 <body>
 
 <div class="container">
-    <h1>Konvertues Euro në Lek</h1>
+    <h1>Konvertues Monedhash</h1>
     <form method="POST">
-        <label for="euro">Shuma në Euro:</label>
-        <input type="number" step="0.01" name="euro" id="euro" required>
+        <label for="shuma">Shuma:</label>
+        <input type="number" step="0.01" name="shuma" id="shuma" required>
 
-        <label for="kursi">Kursi i këmbimit (Euro në Lek):</label>
+        <label for="monedha">Zgjidh monedhën:</label>
+        <select name="monedha" id="monedha" required>
+            <option value="EUR">Euro (EUR)</option>
+            <option value="USD">Dollar Amerikan (USD)</option>
+            <option value="GBP">Paund Britanik (GBP)</option>
+            <option value="CHF">Frangë Zvicerane (CHF)</option>
+            <option value="JPY">Jen Japonez (JPY)</option>
+        </select>
+
+        <label for="kursi">Kursi i këmbimit (në Lek):</label>
         <input type="number" step="0.01" name="kursi" id="kursi" required>
 
         <button type="submit" name="submit">Konverto</button>
@@ -69,14 +78,15 @@
 
     <?php
     if(isset($_POST['submit'])) {
-        $euro = $_POST['euro'];
-        $kursi = $_POST['kursi']; // Kursi i këmbimit që vendos përdoruesi
+        $shuma = $_POST['shuma'];
+        $kursi = $_POST['kursi'];
+        $monedha = $_POST['monedha'];
 
-        if(is_numeric($euro) && $euro > 0 && is_numeric($kursi) && $kursi > 0) {
-            $lek = $euro * $kursi;
-            echo "<div class='result'>{$euro} Euro është e barabartë me " . number_format($lek, 2) . " Lekë (me kursin {$kursi} për Euro).</div>";
+        if(is_numeric($shuma) && $shuma > 0 && is_numeric($kursi) && $kursi > 0) {
+            $lek = $shuma * $kursi;
+            echo "<div class='result'>{$shuma} {$monedha} është e barabartë me " . number_format($lek, 2) . " Lekë (me kursin {$kursi} për {$monedha}).</div>";
         } else {
-            echo "<div class='result' style='color: red;'>Ju lutem vendosni vlera pozitive dhe të vlefshme për Euro dhe Kursin.</div>";
+            echo "<div class='result' style='color: red;'>Ju lutem vendosni vlera pozitive dhe të vlefshme për shumën dhe kursin.</div>";
         }
     }
     ?>
